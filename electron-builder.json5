@@ -1,5 +1,6 @@
 {
-  "appId": "YourAppID",
+  "appId": "com.electron.vite.react",
+  "productName": "electron-vite-react",
   "asar": true,
   "directories": {
     "output": "release/${version}"
@@ -8,6 +9,41 @@
     "dist-electron",
     "dist"
   ],
+  "linux": {
+    "target": [
+      {
+        "target": "deb",
+        "arch": ["x64", "arm64", "armv7l"]
+      },
+      {
+        "target": "AppImage",
+        "arch": ["x64", "arm64", "armv7l"]
+      }
+    ],
+    "maintainer": "tuskermanshu <tuskermanshu@yeah.net>",
+    "vendor": "tuskermanshu",
+    "artifactName": "electron-vite-react_${version}_${arch}.${ext}",
+    "category": "Development",
+    "desktop": {
+      "Name": "electron-vite-react",
+      "Type": "Application",
+      "Categories": "Development"
+    },
+    "synopsis": "Electron Vite React Application",
+    "description": "An Electron application built with Vite and React",
+    "packageCategory": "devel"
+  },
+  // deb 特定配置需要单独放在这里
+  "deb": {
+    "depends": [
+      "gconf2",
+      "gconf-service",
+      "libnotify4",
+      "libappindicator1",
+      "libxtst6",
+      "libnss3"
+    ]
+  },
   "win": {
     "target": [
       {
@@ -19,54 +55,15 @@
         "arch": ["x64"]
       }
     ],
-    "artifactName": "${productName}_${version}_${arch}.${ext}"
-  },
-  "linux": {
-    "target": [
-      {
-        "target": "deb",
-        "arch": ["x64", "arm64", "armv7l"]
-      },
-      {
-        "target": "AppImage",
-        "arch": ["x64", "arm64", "armv7l"]
-      },
-    ],
-    "artifactName": "${productName}_${version}_${arch}.${ext}",
-    "category": "Development",
-    "desktop": {  // Linux 桌面集成配置
-      "Name": "Your App Name",
-      "Type": "Application",
-      "Categories": "Development"
-    }
-  },
-  "deb": {
-    "depends": [  // deb 包依赖
-      "gconf2",
-      "gconf-service",
-      "libnotify4",
-      "libappindicator1",
-      "libxtst6",
-      "libnss3"
-    ],
-    "afterInstall": "build/linux/after-install.sh",  // 安装后脚本
-    "afterRemove": "build/linux/after-remove.sh"     // 卸载后脚本
+    "artifactName": "electron-vite-react_${version}_${arch}.${ext}"
   },
   "nsis": {
-    // 是否一键安装
     "oneClick": false,
-    // 是否开启机器级别安装(为所有用户安装)
     "perMachine": false,
-    // 是否运行用户更改安装目录
     "allowToChangeInstallationDirectory": true,
-    // 卸载时是否删除用户数据
     "deleteAppDataOnUninstall": false,
-    // 是否创建桌面快捷方式
     "createDesktopShortcut": true,
-    // 是否创建开始菜单快捷方式
     "createStartMenuShortcut": true,
-     // 快捷方式名称
-    "shortcutName": "Your App Name"
-    // 
+    "shortcutName": "electron-vite-react"
   }
 }
