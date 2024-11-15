@@ -1,9 +1,9 @@
 {
   "name": "electron-vite-react",
-  "version": "2.2.0",
+  "version": "0.0.1",
   "main": "dist-electron/main/index.js",
   "description": "Electron Vite React boilerplate.",
-  "author": "草鞋没号 <308487730@qq.com>",
+  "author": "tuskermanshu <tuskermanshu@yeah.net>",
   "license": "MIT",
   "private": true,
   "debug": {
@@ -12,13 +12,30 @@
     }
   },
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
-    "preview": "vite preview",
-    "pree2e": "vite build --mode=test",
-    "e2e": "playwright test"
-  },
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build && electron-builder",
+      
+      "build:win-i": "tsc && vite build && electron-builder --win nsis",
+      "build:win-p": "tsc && vite build && electron-builder --win portable",
+      
+      "build:linux-deb-x64": "tsc && vite build && electron-builder --linux deb --x64",
+      "build:linux-appimage-x64": "tsc && vite build && electron-builder --linux AppImage --x64",
+      "build:linux-p-x64": "tsc && vite build && electron-builder --linux tar.gz --x64",
+      
+      "build:linux-deb-arm64": "tsc && vite build && electron-builder --linux deb --arm64",
+      "build:linux-appimage-arm64": "tsc && vite build && electron-builder --linux AppImage --arm64",
+      "build:linux-p-arm64": "tsc && vite build && electron-builder --linux tar.gz --arm64",
+      
+      "build:linux-deb-armv7l": "tsc && vite build && electron-builder --linux deb --armv7l",
+      "build:linux-appimage-armv7l": "tsc && vite build && electron-builder --linux AppImage --armv7l",
+      "build:linux-portable-armv7l": "tsc && vite build && electron-builder --linux tar.gz --armv7l",
+      
+      "build:all": "tsc && vite build && electron-builder -wl",
+      
+      "preview": "vite preview"
+      
+    },
   "dependencies": {
     "electron-updater": "^6.1.8"
   },

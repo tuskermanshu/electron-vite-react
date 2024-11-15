@@ -31,7 +31,15 @@ npm install
 
 # develop
 npm run dev
+
+# build
+
+# 安装版
+npm run build:i
+# 绿色版
+npm run build:p
 ```
+
 
 ## 调试
 
